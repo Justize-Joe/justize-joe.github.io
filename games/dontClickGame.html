@@ -1,0 +1,64 @@
+<html>
+
+
+
+    <head>
+
+    </head>
+
+    <body>
+
+        <h1>Click Game</h1>
+        <a href="games.html">Games</a>
+        <div id="score">Score: 0</div>
+        <div id="time">Time: 10</div>
+        <h1 id ="topMessage">Whatever you do, dont click the button. Just go back and read some books!</h1>
+        <button id="clickB">Dont Start Game</button>
+       
+        <script>
+            let score = 0;
+            let timer;
+            let timeLeft = 10;
+            let isPlaying = false;
+
+            const topMessage = document.getElementById("topMessage");
+            const scoreLabel = document.getElementById("score");
+            const timeLabel = document.getElementById("time")
+            const clickButton = document.getElementById("clickB");
+        
+            clickButton.addEventListener("click", () => {
+                if(isPlaying == true){ 
+                    score++;
+                    scoreLabel.textContent = "Score: " + score;
+                    
+                }else{
+                    isPlaying = true;
+                    score = 0;
+                    timer = setInterval(() => {
+                        timeLeft--;
+                        timeLabel.textContent = "Time: " + timeLeft
+                        if(timeLeft == 0){
+
+                            clearInterval(timer);
+                            if(score != 0){
+                                alert("I told you not to do it...");
+                            }
+                        
+                        }
+    
+                    }, 1000);
+                    scoreLabel.textContent = "Score: " + score;
+                    topMessage.textContent = "What did I tell you, do not press the button..."
+                    clickButton.textContent = "DONT Click"
+                    
+
+                }
+               
+            })
+    
+
+        </script>
+
+    </body>
+
+</html>
